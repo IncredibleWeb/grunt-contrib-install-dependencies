@@ -1,12 +1,12 @@
 {
-    "name": "grunt-install-dependencies",
-    "version": "0.1.1",
+    "name": "grunt-install-client-dependencies",
+    "version": "0.1.0",
     "author": {
         "name": "Stephen Lautier",
         "company": "Betsson Group",
         "url": "http://www.betssondreamteam.com"
     },
-    "repository": "IncredibleWeb/grunt-install-dependencies",
+    "repository": "IncredibleWeb/grunt-install-client-dependencies",
     "engines": {
         "node": ">=0.10.0"
     },
