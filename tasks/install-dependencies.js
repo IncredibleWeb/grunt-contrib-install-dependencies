@@ -1,8 +1,3 @@
-'use strict';
-
-// get the command prompt
-var exec = require('child_process').exec;
-
 /*
  * grunt-contrib-install-dependencies
  * http://gruntjs.com/
@@ -10,6 +5,10 @@ var exec = require('child_process').exec;
  * Copyright (c) 2015 Stephen Lautier, contributors
  */
 module.exports = function(grunt) {
+    'use strict';
+
+    // get the command prompt
+    var exec = require('child_process').exec;
 
     // install bower
     function installBower(options, callback) {
@@ -24,13 +23,13 @@ module.exports = function(grunt) {
 
             if (typeof options.callback === 'function') {
                 options.callback.call(this, err, stdout, stderr, cb);
-            } else{
+            } else {
                 grunt.warn('no callback function specified');
             }
         });
-    };
+    }
 
-    grunt.registerTask('install-dependencies', 'Installs project dependencies.', function() {
+    grunt.registerTask('install-client-dependencies', 'Installs client dependencies.', function() {
 
         // default options
         var options = this.options({
