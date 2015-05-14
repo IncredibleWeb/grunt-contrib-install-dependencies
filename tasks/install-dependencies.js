@@ -11,18 +11,23 @@ module.exports = function(grunt) {
     var exec = require('child_process').exec;
 
     // install bower
-    function installBower(options, callback) {
+    function installBower(options) {
         exec('bower install', {
             cwd: options.cwd
         }, function(err, stdout, stderr) {
-            console.log('bower install');
-            if (!err) {
+            console.log('Running bower install...');
+            if (!err && err !== null) {
                 grunt.log.error(err);
             }
-            console.log(stdout);
+
+            if (!stdout && !stderr) {
+                console.log('No missing packages found.')
+            } else {
+                console.log(stdout, stderr);
+            }
 
             if (typeof options.callback === 'function') {
-                options.callback.call(this, err, stdout, stderr, cb);
+                options.callback.call(this, err, stdout, stderr);
             } else {
                 grunt.warn('no callback function specified');
             }
@@ -31,19 +36,19 @@ module.exports = function(grunt) {
 
     grunt.registerTask('install-client-dependencies', 'Installs client dependencies.', function() {
 
-        // default options
-        var options = this.options({
-            cwd: '.\\' // default to current directory
-        });
-
         // set up async
         var done = this.async();
 
+        // default options
+        var options = this.options({
+            cwd: './', // default to current directory
+            callback: function() { // allow users to set up their own callback
+                done();
+            }
+        });
+
         // run dependency installers synchronously
         grunt.log.writeln("Installing packages...");
-        installBower(options, function() {
-            // inform grunt the task has completed
-            done();
-        });
+        installBower(options);
     });
 };
