@@ -1,5 +1,5 @@
 /*
- * grunt-contrib-install-dependencies
+ * grunt-install-client-dependencies
  * http://gruntjs.com/
  *
  * Copyright (c) 2015 Stephen Lautier, contributors
