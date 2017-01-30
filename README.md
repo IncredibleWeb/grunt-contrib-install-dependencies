@@ -1,3 +1,5 @@
+**Deprecated: This project is no longer actively maintained.**
+
 # grunt-install-client-dependencies
 
 > Installs client dependencies
